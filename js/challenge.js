@@ -50,15 +50,37 @@ likeHeart.addEventListener('click', (e) => {
         console.log('li', selectedElement)
     } else {
         const likeArea = document.querySelector('.likes')
-
         let likeInfo = document.createElement('li')
         likeInfo.id = counterElement.innerText
         likeInfo.dataset.likecount = 1
-        console.log(likeInfo)
-        likeInfo.innerText = `${counterElement.innerText} has been liked 1 time`
-        likeArea.appendChild(likeInfo)
+        if(likeArea.childNodes[likeArea.childNodes.length-1] === undefined){
+            likeInfo.innerText = `${counterElement.innerText} has been liked 1 time`
+            likeArea.appendChild(likeInfo)
+        
+        } else {
+            parsedLikes = parseInt(++likeInfo.dataset.likecount, 10)
+            likeInfo.innerText = `${counterElement.innerText} has been liked ${parsedLikes} times`
+            likeArea.appendChild(likeInfo)
+        }
+    }
+})
+
+//comment function
+ const comments = document.querySelector(".comments")
+ const submitButton = document.querySelector("#submit")
+ const form = document.querySelector("#comment-form")
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    let commentInput = document.querySelector("#comment-input")
+    postComments(e.target.commentInput.value)
+})
+
+function postComments(formInput){
+    let p = document.createElement('p')
+    p.textContent = `${formInput}`
+    comments.appendChild(p)
     }
 
-})
+
 
 
