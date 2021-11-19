@@ -53,10 +53,10 @@ likeHeart.addEventListener('click', (e) => {
         let likeInfo = document.createElement('li')
         likeInfo.id = counterElement.innerText
         likeInfo.dataset.likecount = 1
-        if(likeArea.childNodes[likeArea.childNodes.length-1] === undefined){
+        if (likeArea.childNodes[likeArea.childNodes.length - 1] === undefined) {
             likeInfo.innerText = `${counterElement.innerText} has been liked 1 time`
             likeArea.appendChild(likeInfo)
-        
+
         } else {
             parsedLikes = parseInt(++likeInfo.dataset.likecount, 10)
             likeInfo.innerText = `${counterElement.innerText} has been liked ${parsedLikes} times`
@@ -66,20 +66,20 @@ likeHeart.addEventListener('click', (e) => {
 })
 
 //comment function
- const comments = document.querySelector(".comments")
- const submitButton = document.querySelector("#submit")
- const form = document.querySelector("#comment-form")
+const comments = document.querySelector(".comments")
+const submitButton = document.querySelector("#submit")
+const form = document.querySelector("#comment-form")
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-    let commentInput = document.querySelector("#comment-input")
+    let commentInput = document.querySelector("#commentInput")
     postComments(e.target.commentInput.value)
 })
 
-function postComments(formInput){
-    let p = document.createElement('p')
-    p.textContent = `${formInput}`
-    comments.appendChild(p)
-    }
+function postComments(formInput) {
+    let li = document.createElement('li')
+    li.textContent = `${formInput}`
+    comments.appendChild(li)
+}
 
 
 
